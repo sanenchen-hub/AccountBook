@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.CreatePassActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_create_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="设置密码信息"
+        app:titleTextColor="@color/icons" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/create_pass_set_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:counterEnabled="false"
+            app:counterMaxLength="8"
+            app:endIconMode="custom"
+            app:errorEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="设置密码"
+                android:inputType="numberPassword"
+                android:maxLength="8" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/create_pass_repeat_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            app:counterEnabled="false"
+            app:counterMaxLength="8"
+            app:endIconMode="custom"
+            app:errorEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="重复密码"
+                android:inputType="numberPassword"
+                android:maxLength="8" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/create_pass_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="密码提示" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="注意：这个密码是您进入此软件的凭证，请妥善保管！\n密码提示请您认真对待，谢谢" />
+
+</LinearLayout>

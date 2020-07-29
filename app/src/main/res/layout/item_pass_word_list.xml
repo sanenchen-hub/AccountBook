@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_pass_word_list_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Title"
+                android:textColor="@color/primary_text"
+                android:textSize="18sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="用户名："
+                    android:textColor="@color/primary_text" />
+
+                <TextView
+                    android:id="@+id/item_pass_word_list_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="64dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="8dp"
+                    android:shadowColor="@color/secondary_text"
+                    android:text="user" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="密码："
+                    android:textColor="@color/primary_text" />
+
+                <TextView
+                    android:id="@+id/item_pass_word_list_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="64dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="8dp"
+                    android:shadowColor="@color/secondary_text"
+                    android:text="password" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

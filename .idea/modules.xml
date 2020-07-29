@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="账号管家/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/账号管家.iml" filepath="$PROJECT_DIR$/.idea/modules/账号管家.iml" group="账号管家" />
+    </modules>
+  </component>
+</project>
