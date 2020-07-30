@@ -8,6 +8,13 @@
     android:orientation="vertical"
     tools:context=".activity.PassWordActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@drawable/ic_baseline_fingerprint_24" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
