@@ -1,10 +1,10 @@
 package com.sanenchen.UsersManager.recyclerViewAdapter.passWordList;
 
 public class PassWordList {
-    private int id;
+    private int id, checkLove;
     private String title, user, password, remark, url, createTime;
 
-    public PassWordList(int id, String title, String user, String password, String remark, String url, String createTime) {
+    public PassWordList(int id, String title, String user, String password, String remark, String url, String createTime, int checkLove) {
         this.title = title;
         this.id = id;
         this.user = user;
@@ -12,6 +12,7 @@ public class PassWordList {
         this.remark = remark;
         this.url = url;
         this.createTime = createTime;
+        this.checkLove = checkLove;
     }
 
     public String getTitle() {
@@ -40,6 +41,10 @@ public class PassWordList {
 
     public String getCreateTime() {
         return createTime;
+    }
+
+    public int getCheckLove() {
+        return checkLove;
     }
 
 }

@@ -3,6 +3,7 @@ package com.sanenchen.UsersManager.recyclerViewAdapter.passWordList;
 import android.app.AlarmManager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.activity.MainActivity;
+import com.sanenchen.UsersManager.fragment.FavouriteFragment;
 import com.sanenchen.UsersManager.fragment.HomeFragment;
 import com.sanenchen.UsersManager.tools.DatabaseHelper;
 import com.sanenchen.UsersManager.tools.SHA224;
@@ -41,6 +43,7 @@ import static android.content.Context.ALARM_SERVICE;
 public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapter.ViewHolder> {
     private List<PassWordList> passWordListLists;
     private Context mContext;
+    private int mMessageWhat;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView item_pass_word_list_title, item_pass_word_list_user, item_pass_word_list_password,
@@ -62,9 +65,10 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
         }
     }
 
-    public PassWordListAdapter(List<PassWordList> passWordListLists, Context context) {
+    public PassWordListAdapter(List<PassWordList> passWordListLists, Context context, int MessageWhat) {
         this.passWordListLists = passWordListLists;
         mContext = context;
+        mMessageWhat = MessageWhat;
     }
 
     @NonNull
@@ -85,6 +89,7 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
                 Button copy_user = dialogView.findViewById(R.id.copy_user);
                 Button copy_password = dialogView.findViewById(R.id.copy_password);
                 Button copy_del = dialogView.findViewById(R.id.copy_del);
+                Button move_favourite = dialogView.findViewById(R.id.move_favourite);
                 final PassWordList passWordList = passWordListLists.get(viewHolder.getAdapterPosition());
                 copy_user.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -114,12 +119,47 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
                         //获取剪贴板管理器：
                         DatabaseHelper databaseHelper = new DatabaseHelper(mContext, "main.db", null, 1);
                         SQLiteDatabase database = databaseHelper.getWritableDatabase();
-                        database.delete("PassWordBook", "id = ?", new String[] {passWordList.getId()+""});
-                        new SetRecyclerView(mContext, HomeFragment.viewThis);
+                        database.delete("PassWordBook", "id = ?", new String[]{passWordList.getId() + ""});
+                        new SetRecyclerView(mContext, HomeFragment.viewThis, mMessageWhat);
                         Toast.makeText(mContext, "已删除", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 });
+                if (passWordList.getCheckLove() == 0) {
+                    move_favourite.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            DatabaseHelper databaseHelper = new DatabaseHelper(mContext, "main.db", null, 1);
+                            SQLiteDatabase database = databaseHelper.getWritableDatabase();
+                            ContentValues values = new ContentValues();
+                            values.put("checkLove", 1);
+                            database.update("PassWordBook", values, "id = ?", new String[]{passWordList.getId() + ""});
+                            new SetRecyclerView(mContext, HomeFragment.viewThis, mMessageWhat);
+                            Toast.makeText(mContext, "已添加", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+                    });
+                } else {
+                    move_favourite.setText("移出收藏夹");
+                    move_favourite.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            DatabaseHelper databaseHelper = new DatabaseHelper(mContext, "main.db", null, 1);
+                            SQLiteDatabase database = databaseHelper.getWritableDatabase();
+                            ContentValues values = new ContentValues();
+                            values.put("checkLove", 0);
+                            database.update("PassWordBook", values, "id = ?", new String[]{passWordList.getId() + ""});
+                            if (mMessageWhat == 0) {
+                                new SetRecyclerView(mContext, HomeFragment.viewThis, mMessageWhat);
+                            } else {
+                                new SetRecyclerView(mContext, FavouriteFragment.viewThis, mMessageWhat);
+                            }
+
+                            Toast.makeText(mContext, "已移出", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+                    });
+                }
             }
         });
         return viewHolder;
@@ -139,7 +179,6 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
         } else {
             getPassword = passWordList.getPassword();
         }
-
 
         holder.item_pass_word_list_title.setText(passWordList.getTitle());
         holder.item_pass_word_list_user.setText(passWordList.getUser());

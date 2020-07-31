@@ -145,7 +145,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:paddingLeft="72dp"
-                        android:text="修改安全密码" />
+                        android:text="修改安全密码"
+                        android:textColor="@color/secondary_text" />
                 </FrameLayout>
             </LinearLayout>
 

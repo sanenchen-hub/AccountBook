@@ -103,7 +103,6 @@ public class NewPasswordInformation extends AppCompatActivity {
                     values.put("lookTime", 0);
                     values.put("checkLove", "0");
                     values.put("url", password_url.getEditText().getText().toString());
-                    Toast.makeText(NewPasswordInformation.this, simpleDateFormat.format(date), Toast.LENGTH_SHORT).show();
                     database.insert("PassWordBook", null, values);
                     databaseHelper.close();
                     finish();

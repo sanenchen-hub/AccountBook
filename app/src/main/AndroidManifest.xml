@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.NewPasswordInformation"></activity>
+        <activity android:name=".activity.NewPasswordInformation"/>
         <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.verificationPass.InputPasswordActivity" />
+        <activity android:name=".activity.verificationPass.InputFingerPrintActivity" />
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.CreatePassActivity">
             <intent-filter>
@@ -21,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PassWordActivity" />
+        <activity android:name=".activity.verificationPass.PassWordActivity" />
     </application>
 
 </manifest>

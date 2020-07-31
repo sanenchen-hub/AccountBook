@@ -26,6 +26,13 @@
         android:text="编辑（暂时下线）" />
 
     <Button
+        android:id="@+id/move_favourite"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加进收藏" />
+
+    <Button
         android:id="@+id/copy_del"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:layout_width="match_parent"

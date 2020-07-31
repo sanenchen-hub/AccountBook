@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_ground_radients_card"
+    tools:context=".activity.verificationPass.InputFingerPrintActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请验证指纹"
+            android:textColor="@color/primary_text"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/image_finger"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingTop="16dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_baseline_fingerprint_24_black" />
+
+        <Button
+            android:id="@+id/button_use_password"
+            style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp"
+            android:text="密码解锁"
+            android:textColor="@color/primary_text" />
+
+    </LinearLayout>
+
+</FrameLayout>

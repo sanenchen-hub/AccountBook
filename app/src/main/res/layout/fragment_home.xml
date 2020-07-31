@@ -7,19 +7,13 @@
     tools:context=".fragment.HomeFragment">
 
 
-    <FrameLayout
+    <ImageView
         android:id="@+id/text_view_home_tno_thing"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <ImageView
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_inbox_24"
-            tools:visibility="visible" />
-    </FrameLayout>
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_inbox_24"
+        tools:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_all_pass"

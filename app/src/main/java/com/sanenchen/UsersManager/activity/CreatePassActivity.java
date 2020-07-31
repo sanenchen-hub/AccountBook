@@ -23,11 +23,9 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.sanenchen.UsersManager.R;
+import com.sanenchen.UsersManager.activity.verificationPass.PassWordActivity;
 import com.sanenchen.UsersManager.tools.DatabaseHelper;
 import com.sanenchen.UsersManager.tools.SHA224;
-
-import javax.crypto.KeyGenerator;
-import javax.net.ssl.KeyManager;
 
 /**
  * 设置安全密码

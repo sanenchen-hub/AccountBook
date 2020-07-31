@@ -13,6 +13,7 @@ import android.util.Log;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.sanenchen.UsersManager.R;
+import com.sanenchen.UsersManager.fragment.FavouriteFragment;
 import com.sanenchen.UsersManager.fragment.HomeFragment;
 import com.sanenchen.UsersManager.fragment.SettingFragment;
 
@@ -21,7 +22,9 @@ import com.sanenchen.UsersManager.fragment.SettingFragment;
  */
 public class MainActivity extends AppCompatActivity {
     private HomeFragment homeFragment;
+    private FavouriteFragment favouriteFragment;
     private SettingFragment settingFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,20 +51,20 @@ public class MainActivity extends AppCompatActivity {
                                 transaction.replace(R.id.frame, homeFragment);
                                 break;
 
+                            case 1:
+                                if (favouriteFragment == null) {
+                                    favouriteFragment = new FavouriteFragment();
+                                }
+                                transaction.replace(R.id.frame, favouriteFragment);
+                                break;
+
                             case 3:
                                 if (settingFragment == null) {
                                     settingFragment = new SettingFragment();
                                 }
                                 transaction.replace(R.id.frame, settingFragment);
                                 break;
-                                /*
-                            case 2:
-                                if (mineActivity == null) {
-                                    mineActivity = new MineActivity();
-                                }
-                                transaction.replace(R.id.frame, mineActivity);
-                                break;
-                             */
+
                             default:
                                 break;
                         }
