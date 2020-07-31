@@ -12,6 +12,8 @@
 - 全程不联网
 - 使用Hash算法加密处理
 - 支持Android6.0-11
+### 最新版本预览
+![image](https://blogoss.lyqmc.cn/typecho/uploads/2020/07/4269439139.gif)
 
 ## 更新记录
 ### V0.4 内测更新
@@ -19,6 +21,8 @@
 2. 适配屏下指纹的按键冲突
 3. 新增收藏功能
 [APK下载](https://github.com/sanenchen-hub/AccountBook/releases/tag/v0.4)
+#### 预览
+![image](https://blogoss.lyqmc.cn/typecho/uploads/2020/07/4269439139.gif)
 
 ### V0.3 内测更新
 1. 优化了一些UI不统一的问题
