@@ -26,10 +26,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "id integer primary key autoincrement," +
                         "title text," +
                         "user text," +
-                        "other text," +
-                        "website text," +
+                        "password text," +
+                        "remark text," +
+                        "url text," +
                         "createTime text," +
-                        "lookTime text," +
+                        "lookTime integer," +
                         "checkLove int)";
         db.execSQL(mainSQL);
     }

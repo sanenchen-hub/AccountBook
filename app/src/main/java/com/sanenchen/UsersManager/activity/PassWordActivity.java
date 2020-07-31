@@ -3,6 +3,7 @@ package com.sanenchen.UsersManager.activity;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,7 +13,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.VectorDrawable;
 import android.hardware.fingerprint.FingerprintManager;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
@@ -21,6 +28,7 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.sanenchen.UsersManager.R;
@@ -47,6 +55,7 @@ public class PassWordActivity extends AppCompatActivity implements View.OnClickL
     List<PassWordRound> passWordRoundList = new ArrayList<>();
     FingerprintManager manager;
     KeyguardManager mKeyManager;
+    ImageView image_finger;//指纹图标
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +65,13 @@ public class PassWordActivity extends AppCompatActivity implements View.OnClickL
         /*指纹识别*/
         manager = (FingerprintManager) this.getSystemService(Context.FINGERPRINT_SERVICE);
         mKeyManager = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
-        if (isFinger()) {
-            //Toast.makeText(PassWordActivity.this, "请进行指纹识别", Toast.LENGTH_LONG).show();
-            startListening(null);
+        image_finger = findViewById(R.id.image_finger);
+
+        if (getSharedPreferences(new SHA224().SHA224("data"), MODE_PRIVATE)
+                .getBoolean(new SHA224().SHA224("check_finger_print"), false)) {
+            /*如果指纹验证可用的话*/
+            startListening(null);//启动指纹监听
+            image_finger.setVisibility(View.VISIBLE);//显示指纹图标
         }
 
         /*绑定控件*/
@@ -147,39 +160,17 @@ public class PassWordActivity extends AppCompatActivity implements View.OnClickL
     /**
      * 指纹验证
      */
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    public boolean isFinger() {
-        //android studio 上，没有这个会报错
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "没有指纹识别权限", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        //判断硬件是否支持指纹识别
-        if (!manager.isHardwareDetected()) {
-            Toast.makeText(this, "没有指纹识别模块", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        //判断 是否开启锁屏密码
-        if (!mKeyManager.isKeyguardSecure()) {
-            Toast.makeText(this, "没有开启锁屏密码", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        //判断是否有指纹录入
-        if (!manager.hasEnrolledFingerprints()) {
-            Toast.makeText(this, "没有录入指纹", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        return true;
-    }
-
     CancellationSignal mCancellationSignal = new CancellationSignal();
     //回调方法
     FingerprintManager.AuthenticationCallback mSelfCancelled = new FingerprintManager.AuthenticationCallback() {
         @Override
         public void onAuthenticationError(int errorCode, CharSequence errString) {
             //但多次指纹密码验证错误后，进入此方法；并且，不能短时间内调用指纹验证
-            Toast.makeText(PassWordActivity.this, errString, Toast.LENGTH_SHORT).show();
+            if (errorCode != 5) {
+                Drawable drawable = getResources().getDrawable(R.drawable.ic_baseline_fingerprint_24_red);
+                image_finger.setImageDrawable(drawable);
+                Toast.makeText(PassWordActivity.this, errString, Toast.LENGTH_SHORT).show();
+            }
         }
 
         @Override
@@ -196,22 +187,17 @@ public class PassWordActivity extends AppCompatActivity implements View.OnClickL
         @Override
         public void onAuthenticationFailed() {
             /*错误后*/
-            /*震动提示一下*/
             /*注意！！这里用到了一个权限：震动权限*/
+            Drawable drawable = getResources().getDrawable(R.drawable.ic_baseline_fingerprint_24_red);
+            image_finger.setImageDrawable(drawable);
             Vibrator vibrator = (Vibrator) PassWordActivity.this.getSystemService(VIBRATOR_SERVICE);
-            vibrator.vibrate(100);
-
+            vibrator.vibrate(100);//震动提示一下
         }
     };
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void startListening(FingerprintManager.CryptoObject cryptoObject) {
-        //android studio 上，没有这个会报错
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "没有指纹识别权限", Toast.LENGTH_SHORT).show();
-            return;
-        }
         manager.authenticate(cryptoObject, mCancellationSignal, 0, mSelfCancelled, null);
     }
 }

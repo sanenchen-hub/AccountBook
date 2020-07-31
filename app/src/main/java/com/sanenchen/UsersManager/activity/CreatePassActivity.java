@@ -4,21 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.KeyguardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.tools.DatabaseHelper;
 import com.sanenchen.UsersManager.tools.SHA224;
+
+import javax.crypto.KeyGenerator;
+import javax.net.ssl.KeyManager;
 
 /**
  * 设置安全密码
@@ -30,6 +39,7 @@ public class CreatePassActivity extends AppCompatActivity {
     TextInputLayout create_pass_set_pass;
     TextInputLayout create_pass_repeat_pass;
     TextInputLayout create_pass_tips;
+    CheckBox check_box_check_finger_print;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +73,48 @@ public class CreatePassActivity extends AppCompatActivity {
             /* 启动密码验证界面 */
             startActivity(new Intent(CreatePassActivity.this, PassWordActivity.class));//启动界面
             finish();//关闭这个界面
+        } else {
+            /*功能配置*/
+            //使“指纹验证”CheckBox可用
+            check_box_check_finger_print = findViewById(R.id.check_box_check_finger_print);
+            if (checkFingerprintSupport()) {
+                check_box_check_finger_print.setEnabled(true);
+                check_box_check_finger_print.setChecked(true);
+            }
+        }
+    }
+
+    /**
+     * 判断是否支持指纹验证
+     * 用到的权限：USE_FINGERPRINT
+     */
+    private Boolean checkFingerprintSupport() {
+        FingerprintManager manager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+        KeyguardManager mKeyManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+        //android studio 上，没有这个会报错
+        try {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "没有指纹识别权限", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            //判断硬件是否支持指纹识别
+            if (!manager.isHardwareDetected()) {
+                Toast.makeText(this, "此手机不支持指纹识别", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            //判断 是否开启锁屏密码
+            if (!mKeyManager.isKeyguardSecure()) {
+                Toast.makeText(this, "没有开启锁屏密码", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            //判断是否有指纹录入
+            if (!manager.hasEnrolledFingerprints()) {
+                Toast.makeText(this, "没有录入指纹", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 
@@ -91,6 +143,10 @@ public class CreatePassActivity extends AppCompatActivity {
                 } else {
                     create_pass_set_pass.setErrorEnabled(true);
                     create_pass_set_pass.setError("密码需要不小于4位数");
+                }
+                if (create_pass_repeat_pass.getEditText().getText().toString().equals(
+                        create_pass_set_pass.getEditText().getText().toString())) {
+                    create_pass_repeat_pass.setErrorEnabled(false);
                 }
             }
         });
@@ -143,13 +199,20 @@ public class CreatePassActivity extends AppCompatActivity {
                 create_pass_repeat_pass.getEditText().getText().toString()
                         .equals(create_pass_set_pass.getEditText().getText().toString()) &&
                 !create_pass_tips.getEditText().getText().toString().equals("")) {
+
             /*将机密信息加密并写入文件*/
             SharedPreferences.Editor editor = getSharedPreferences(new SHA224().SHA224("data"), MODE_PRIVATE).edit();
             editor.putString(new SHA224().SHA224("password"),
                     new SHA224().SHA224(create_pass_repeat_pass.getEditText().getText().toString()));
             editor.putString(new SHA224().SHA224("pass_word_tips"),
                     create_pass_tips.getEditText().getText().toString());//密码提示就不加密了
-            editor.apply();
+            /*判断是否使用了指纹验证*/
+            Boolean boolean_check_finger_print = false;
+            if (check_box_check_finger_print.isChecked()) {//如果选中
+                boolean_check_finger_print = true;
+            }
+            editor.putBoolean(new SHA224().SHA224("check_finger_print"), boolean_check_finger_print);
+            editor.apply();//保存文件
 
             /* 显示一个对话框 */
             AlertDialog.Builder builder = new AlertDialog
@@ -170,13 +233,13 @@ public class CreatePassActivity extends AppCompatActivity {
                 create_pass_set_pass.setErrorEnabled(true);
                 create_pass_set_pass.setError("密码需要不小于4位数");
             }
-            if (!create_pass_repeat_pass.getEditText().getText()
-                    .equals(create_pass_repeat_pass.getEditText().getText().toString())) {
-                create_pass_set_pass.setErrorEnabled(true);
-                create_pass_set_pass.setError("与刚刚的密码不一致");
+            if (!create_pass_repeat_pass.getEditText().getText().toString()
+                    .equals(create_pass_set_pass.getEditText().getText().toString())) {
+                create_pass_repeat_pass.setErrorEnabled(true);
+                create_pass_repeat_pass.setError("与刚刚的密码不一致");
             }
             if (create_pass_tips.getEditText().getText().toString().equals("")) {
-                create_pass_set_pass.setError("此项为必填项");
+                create_pass_tips.setError("此项为必填项");
             }
             Toast.makeText(CreatePassActivity.this, "请您检查下飘红的地方", Toast.LENGTH_SHORT).show();
         }

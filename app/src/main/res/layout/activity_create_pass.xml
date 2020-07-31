@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:hint="设置密码"
                 android:inputType="numberPassword"
-                android:maxLength="8" />
+                android:maxLength="8"
+                android:paddingStart="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -58,7 +59,9 @@
                 android:layout_height="wrap_content"
                 android:hint="重复密码"
                 android:inputType="numberPassword"
-                android:maxLength="8" />
+                android:maxLength="8"
+                android:paddingStart="16dp"
+                android:paddingRight="8dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -70,10 +73,20 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="密码提示" />
+                android:hint="密码提示"
+                android:paddingStart="16dp"
+                android:paddingRight="8dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/check_box_check_finger_print"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:enabled="false"
+        android:text="指纹认证" />
 
     <TextView
         android:id="@+id/textView3"

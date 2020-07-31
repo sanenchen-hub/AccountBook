@@ -1,6 +1,7 @@
 package com.sanenchen.UsersManager.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -43,7 +44,7 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction("android.intent.action.VIEW");
-                Uri content_url = Uri.parse("https://github.com/sanenchen-hub/ClassWarning");
+                Uri content_url = Uri.parse("https://github.com/sanenchen-hub/AccountBook");
                 intent.setData(content_url);
                 startActivity(intent);
             }

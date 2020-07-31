@@ -5,7 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setMode(BottomNavigationBar.MODE_DEFAULT)
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
-                .setActiveColor(R.color.colorAccent) //选中颜色
+                .setActiveColor(R.color.colorPrimary) //选中颜色
                 .setInActiveColor("#888888") //未选中颜色
                 .setBarBackgroundColor(R.color.icons);//导航栏背景色
         bottomNavigationBar
