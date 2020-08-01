@@ -11,7 +11,7 @@
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_baseline_inbox_24"
+        android:src="@drawable/ic_baseline_favorite_24"
         android:visibility="gone"
         tools:visibility="gone" />
 

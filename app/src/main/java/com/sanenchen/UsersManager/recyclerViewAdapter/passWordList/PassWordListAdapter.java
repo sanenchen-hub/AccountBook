@@ -27,6 +27,7 @@ import com.sanenchen.UsersManager.activity.MainActivity;
 import com.sanenchen.UsersManager.fragment.FavouriteFragment;
 import com.sanenchen.UsersManager.fragment.HomeFragment;
 import com.sanenchen.UsersManager.tools.DatabaseHelper;
+import com.sanenchen.UsersManager.tools.GetSettingThings;
 import com.sanenchen.UsersManager.tools.SHA224;
 import com.sanenchen.UsersManager.tools.SetRecyclerView;
 
@@ -35,7 +36,7 @@ import java.util.List;
 import static android.content.Context.ALARM_SERVICE;
 
 /**
- * RecyclerView recycler_view_all_pass的适配器
+ * RecyclerView recycler_view_xxx_pass的适配器
  *
  * @author sanenchen
  * @version v1.0
@@ -170,11 +171,18 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
         PassWordList passWordList = passWordListLists.get(position);
         String getPassword = "";
         SharedPreferences preferences = mContext.getSharedPreferences(new SHA224().SHA224("data"), Context.MODE_PRIVATE);
-        if (!preferences.getBoolean(new SHA224().SHA224("check_password_show"), false)) {
+        if (!new GetSettingThings(mContext).checkShowPassword()) {
             int totalPassLength;
             totalPassLength = passWordList.getPassword().length();
             for (int i = 0; i < totalPassLength; i++) {
-                getPassword = getPassword + "*";
+                if (i == 0) {
+                    getPassword = (String) passWordList.getPassword().subSequence(0, 1);
+                } else if (i == totalPassLength - 1) {
+                    getPassword = getPassword + passWordList.getPassword().substring(totalPassLength - 1);
+                } else {
+                    getPassword = getPassword + "*";
+                }
+
             }
         } else {
             getPassword = passWordList.getPassword();

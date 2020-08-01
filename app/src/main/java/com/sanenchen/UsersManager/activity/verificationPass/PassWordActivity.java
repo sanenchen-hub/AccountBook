@@ -35,6 +35,7 @@ import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.activity.MainActivity;
 import com.sanenchen.UsersManager.recyclerViewAdapter.passWordRound.PassWordRound;
 import com.sanenchen.UsersManager.recyclerViewAdapter.passWordRound.PassWordRoundAdapter;
+import com.sanenchen.UsersManager.tools.GetSettingThings;
 import com.sanenchen.UsersManager.tools.SHA224;
 
 import java.security.KeyStore;
@@ -58,13 +59,13 @@ public class PassWordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getSharedPreferences(new SHA224().SHA224("data"), MODE_PRIVATE)
-                .getBoolean(new SHA224().SHA224("check_finger_print"), false)) {
+        if (new GetSettingThings(this).checkFingerPrintSetting()) {
             /*如果指纹验证可用的话*/
                 startActivity(new Intent(PassWordActivity.this, InputFingerPrintActivity.class));
         } else {
             /*如果指纹验证不可用的话*/
             startActivity(new Intent(PassWordActivity.this, InputPasswordActivity.class));
         }
+        finish();
     }
 }

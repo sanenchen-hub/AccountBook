@@ -35,7 +35,7 @@
             style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="32dp"
+            android:layout_marginTop="32dp"
             android:text="密码解锁"
             android:textColor="@color/primary_text" />
 

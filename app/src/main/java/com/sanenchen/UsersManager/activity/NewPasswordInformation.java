@@ -10,8 +10,11 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -22,6 +25,7 @@ import com.sanenchen.UsersManager.tools.DatabaseHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 点击FAB后的创建密码Activity
@@ -113,5 +117,4 @@ public class NewPasswordInformation extends AppCompatActivity {
         }
         return true;
     }
-
 }

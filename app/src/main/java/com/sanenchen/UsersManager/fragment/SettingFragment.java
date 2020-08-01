@@ -31,6 +31,7 @@ import android.widget.Toast;
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.activity.AboutActivity;
 import com.sanenchen.UsersManager.activity.CreatePassActivity;
+import com.sanenchen.UsersManager.tools.GetSettingThings;
 import com.sanenchen.UsersManager.tools.SHA224;
 
 import static android.content.Context.FINGERPRINT_SERVICE;
@@ -62,7 +63,7 @@ public class SettingFragment extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences(new SHA224().SHA224("data"),MODE_PRIVATE);
         /*指纹Switch并监听*/
         Switch switch_finger_print = viewThis.findViewById(R.id.switch_finger_print);
-        if (preferences.getBoolean(new SHA224().SHA224("check_finger_print"), false)) {
+        if (new GetSettingThings(getActivity()).checkFingerPrintSetting()) {
             switch_finger_print.setChecked(true);
         }
         switch_finger_print.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -86,7 +87,7 @@ public class SettingFragment extends Fragment {
         }
         /*主页显示密码Switch并监听*/
         Switch switch_password_show = viewThis.findViewById(R.id.switch_password_show);
-        if (preferences.getBoolean(new SHA224().SHA224("check_password_show"), false)) {
+        if (new GetSettingThings(getActivity()).checkShowPassword()) {
             switch_finger_print.setChecked(true);
         }
         switch_password_show.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

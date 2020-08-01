@@ -40,6 +40,7 @@ public class InputFingerPrintActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(InputFingerPrintActivity.this, InputPasswordActivity.class));
+                finish();
             }
         });
 
@@ -72,7 +73,7 @@ public class InputFingerPrintActivity extends AppCompatActivity {
         public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
             /*认证成功后*/
             startActivity(new Intent(InputFingerPrintActivity.this, MainActivity.class));
-            InputFingerPrintActivity.this.finish();
+            finish();
         }
 
         @Override
