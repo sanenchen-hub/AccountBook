@@ -6,7 +6,9 @@ import android.content.ClipboardManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +16,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanenchen.UsersManager.R;
@@ -51,6 +55,7 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
                 item_pass_word_list_remark, item_pass_word_list_url, item_pass_word_list_create_date;
         FrameLayout item_pass_word_list_url_layout, item_pass_word_list_remark_layout;
         CardView card_view_item_pass;
+        LinearLayout card_view_item_linear;
 
         public ViewHolder(View view) {
             super(view);
@@ -63,6 +68,7 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
             item_pass_word_list_url_layout = view.findViewById(R.id.item_pass_word_list_url_layout);
             item_pass_word_list_remark_layout = view.findViewById(R.id.item_pass_word_list_remark_layout);
             card_view_item_pass = view.findViewById(R.id.card_view_item_pass);
+            card_view_item_linear = view.findViewById(R.id.card_view_item_linear);
         }
     }
 
@@ -199,6 +205,16 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
         if (!passWordList.getUrl().equals("")) {
             holder.item_pass_word_list_url_layout.setVisibility(View.VISIBLE);
             holder.item_pass_word_list_url.setText(passWordList.getUrl());
+        }
+
+        if (passWordList.getCheckLove() == 0) {
+            Resources resources = mContext.getResources();
+            Drawable drawable = resources.getDrawable(R.drawable.back_ground_radients_card);
+            holder.card_view_item_linear.setBackground(drawable);
+        } else {
+            Resources resources = mContext.getResources();
+            Drawable drawable = resources.getDrawable(R.drawable.back_ground_radients_card_love);
+            holder.card_view_item_linear.setBackground(drawable);
         }
     }
 

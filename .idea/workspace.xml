@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="zyn" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="TAG" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -25,7 +25,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -37,8 +42,8 @@
       <list>
         <option value="valueResourceFile" />
         <option value="layoutResourceFile_vertical" />
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -62,14 +67,14 @@
   <component name="PropertiesComponent">
     <property name="ApkExportedModule" value="app" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="810f9611" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-31T04:49:01.387Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-01T12:59:40.237Z" />
     <property name="ExportApk.ApkPath" value="D:\Codes\Android\GitHub\usersManager\app" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -93,6 +98,7 @@
       <recent name="com.sanenchen.UsersManager" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Codes\Android\GitHub\usersManager\app\src\main\res\drawable-v24" />
       <recent name="D:\Codes\Android\GitHub\usersManager\app\src\main\res\drawable" />
       <recent name="D:\Codes\Android\GitHub\usersManager\app\src\main\java\com\sanenchen\UsersManager\tools" />
     </key>
@@ -186,62 +192,62 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1596085973861" />
-    <state x="200" y="96" key="#PSD" timestamp="1596175294592">
+    <state x="200" y="96" key="#PSD" timestamp="1596289260681">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1596175294592" />
+    <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1596289260681" />
     <state x="192" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595754818440">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="192" y="195" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1595754818440" />
-    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1596197202191">
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1596287536893">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596197202191" />
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596287536893" />
     <state x="179" y="289" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1596198328483">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="179" y="289" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1596198328483" />
-    <state x="294" y="154" key="AndroidCreateResourceFileDialog" timestamp="1596201594534">
+    <state x="294" y="154" key="AndroidCreateResourceFileDialog" timestamp="1596283800432">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="294" y="154" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1596201594534" />
+    <state x="294" y="154" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1596283800432" />
     <state x="463" y="104" key="FileChooserDialogImpl" timestamp="1596254639016">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596254639016" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1596206750921">
+    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1596288662353">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596206750921" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1596206750921">
+    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
+    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1596288662353">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596206750921" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1596206750918">
+    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
+    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1596288662353">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596206750918" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1596206750921">
+    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
+    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1596288662353">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596206750921" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1596206750922">
+    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1596288662354">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596206750922" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1596206750922">
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
+    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1596288662354">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1596206750922" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1596206750922">
+    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
+    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1596288662354">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1596206750922" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1596206750922">
+    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
+    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1596288662354">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1596206750922" />
+    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
     <state x="407" y="238" key="ScreenshotRecorder.Options.Dimensions" timestamp="1595750099323">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

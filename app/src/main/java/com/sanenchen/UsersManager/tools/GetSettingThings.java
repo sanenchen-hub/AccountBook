@@ -33,4 +33,12 @@ public class GetSettingThings {
     public boolean checkShowPassword() {
         return data.getBoolean(new SHA224().SHA224("check_password_show"), false);
     }
+
+    /**
+     * 获取是否开启允许在所有界面截屏功能
+     */
+
+    public boolean checkCanScreenshot() {
+        return data.getBoolean(new SHA224().SHA224("check_can_screenshot"), false);
+    }
 }

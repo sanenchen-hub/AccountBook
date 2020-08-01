@@ -22,6 +22,10 @@ import com.sanenchen.UsersManager.tools.SHA224;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 密码解锁
+ * @author sanenchen
+ */
 public class InputPasswordActivity extends AppCompatActivity implements View.OnClickListener{
     List<PassWordRound> passWordRoundList = new ArrayList<>();
     @Override

@@ -20,6 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.activity.MainActivity;
 
+/**
+ * 指纹监听
+ * @author sanenchen
+ */
 public class InputFingerPrintActivity extends AppCompatActivity {
     FingerprintManager manager;
     KeyguardManager mKeyManager;
@@ -43,11 +47,17 @@ public class InputFingerPrintActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
+    /**
+     * 为了使每一次都可以指纹解锁，放在这里监听
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
         /*调用方法*/
         startListening(null);
     }
-
 
     /**
      * 指纹验证

@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.activity.verificationPass.PassWordActivity;
 import com.sanenchen.UsersManager.tools.DatabaseHelper;
+import com.sanenchen.UsersManager.tools.GetSettingThings;
 import com.sanenchen.UsersManager.tools.SHA224;
 
 /**
@@ -49,6 +51,17 @@ public class CreatePassActivity extends AppCompatActivity {
         createDatabase();
         checkSetPassWord();
         setEditViewListenError();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /*判断是否可以截屏*/
+        if (new GetSettingThings(this).checkCanScreenshot()) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);//允许截屏
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);//禁止截屏
+        }
     }
 
     /**

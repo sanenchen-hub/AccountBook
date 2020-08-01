@@ -23,6 +23,10 @@ import com.sanenchen.UsersManager.tools.SetRecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 收藏碎片
+ * @author sanenchen
+ */
 public class FavouriteFragment extends Fragment {
     public static View viewThis;
     @Override

@@ -30,7 +30,7 @@
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="添加进收藏" />
+        android:text="添加进收藏夹" />
 
     <Button
         android:id="@+id/copy_del"

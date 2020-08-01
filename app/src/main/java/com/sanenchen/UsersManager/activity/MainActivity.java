@@ -1,14 +1,19 @@
 package com.sanenchen.UsersManager.activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -16,22 +21,39 @@ import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.fragment.FavouriteFragment;
 import com.sanenchen.UsersManager.fragment.HomeFragment;
 import com.sanenchen.UsersManager.fragment.SettingFragment;
+import com.sanenchen.UsersManager.tools.GetSettingThings;
 
 /**
  * 主要负责一些碎片的切换
+ * @author sanenchen
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
+    public static int appCount = 0;
     private HomeFragment homeFragment;
     private FavouriteFragment favouriteFragment;
     private SettingFragment settingFragment;
+    private Activity activityz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        activityz = this;
         /*调用方法*/
         setBottomBar();
         setToolBar();
+        // 注册前后台监听
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /*判断是否可以截屏*/
+        if (new GetSettingThings(this).checkCanScreenshot()) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);//允许截屏
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);//禁止截屏
+        }
     }
 
     private void setBottomBar() {
@@ -111,5 +133,32 @@ public class MainActivity extends AppCompatActivity {
     private void setToolBar() {
         Toolbar toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
+    }
+
+    /**
+     * 监测是否退到后台
+     */
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        appCount = 0;
+    }
+
+    protected void onStart() {
+        super.onStart();
+        appCount--;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        appCount--;
+        if(appCount <= 0){
+            finish();
+        }
+    }
+
+    public static void add() {
+        appCount = 100;
     }
 }

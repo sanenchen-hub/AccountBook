@@ -21,6 +21,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -31,8 +32,12 @@ import android.widget.Toast;
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.activity.AboutActivity;
 import com.sanenchen.UsersManager.activity.CreatePassActivity;
+import com.sanenchen.UsersManager.activity.MainActivity;
+import com.sanenchen.UsersManager.tools.DataCleanManager;
 import com.sanenchen.UsersManager.tools.GetSettingThings;
 import com.sanenchen.UsersManager.tools.SHA224;
+
+import java.io.File;
 
 import static android.content.Context.FINGERPRINT_SERVICE;
 import static android.content.Context.KEYGUARD_SERVICE;
@@ -58,9 +63,9 @@ public class SettingFragment extends Fragment {
 
     /**
      * 初始化View
+     * 监听各个选项
      */
     private void intView() {
-        SharedPreferences preferences = getActivity().getSharedPreferences(new SHA224().SHA224("data"),MODE_PRIVATE);
         /*指纹Switch并监听*/
         Switch switch_finger_print = viewThis.findViewById(R.id.switch_finger_print);
         if (new GetSettingThings(getActivity()).checkFingerPrintSetting()) {
@@ -98,6 +103,22 @@ public class SettingFragment extends Fragment {
                 editor.apply();//保存文件
             }
         });
+        /*允许在所有界面截图*/
+        Switch switch_can_screenshot = viewThis.findViewById(R.id.switch_can_screenshot);
+        if (new GetSettingThings(getActivity()).checkCanScreenshot()) {
+            switch_can_screenshot.setChecked(true);
+        }
+        switch_can_screenshot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences(new SHA224().SHA224("data"), MODE_PRIVATE).edit();
+                editor.putBoolean(new SHA224().SHA224("check_can_screenshot"), isChecked);
+                editor.apply();//保存文件
+                if (isChecked) {
+                    getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);//允许截屏
+                }
+            }
+        });
     }
 
     /**
@@ -114,6 +135,7 @@ public class SettingFragment extends Fragment {
                 editor.clear();
                 editor.putBoolean("testBack", true);
                 editor.apply();
+                MainActivity.add();
                 startActivity(new Intent(getActivity(), AboutActivity.class));//启动关于Activity
             }
         });
@@ -149,6 +171,35 @@ public class SettingFragment extends Fragment {
                                 }
                             }
                         }).setNegativeButton("取消", null).show();
+            }
+        });
+
+        /*监听清空*/
+        LinearLayout item_card_view_clean_all = viewThis.findViewById(R.id.item_card_view_clean_all);
+        item_card_view_clean_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getActivity())
+                        .setTitle("警告")
+                        .setMessage("此操作十分危险，它将会删除这个软件的所有数据(密码信息除外)，请慎重！")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                new DataCleanManager().DeleteFile(new File("data/data/" + getActivity().getPackageName()));
+                                getActivity().finish();
+                                getActivity().startActivity(new Intent(getActivity(), CreatePassActivity.class));
+                                SharedPreferences preferences = getActivity().getSharedPreferences(new SHA224().SHA224("data"), MODE_PRIVATE);
+                                String backupPassword = preferences.getString(new SHA224().SHA224("password"), null);
+                                String backupPasswordTips = preferences.getString(new SHA224().SHA224("pass_word_tips"),null);SharedPreferences.Editor editor = getActivity().getSharedPreferences(new SHA224().SHA224("data"), MODE_PRIVATE).edit();
+                                editor.clear();
+                                editor.putString(new SHA224().SHA224("password"), backupPassword);
+                                editor.putString(new SHA224().SHA224("pass_word_tips"), backupPasswordTips);
+                                editor.putBoolean(new SHA224().SHA224("check_finger_print"), new GetSettingThings(getActivity()).checkFingerPrintSetting());
+                                editor.apply();
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
             }
         });
 

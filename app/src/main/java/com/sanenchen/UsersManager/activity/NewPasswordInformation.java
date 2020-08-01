@@ -17,11 +17,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.tools.DatabaseHelper;
+import com.sanenchen.UsersManager.tools.GetSettingThings;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +31,7 @@ import java.util.List;
 
 /**
  * 点击FAB后的创建密码Activity
+ * @author sanenchen
  */
 public class NewPasswordInformation extends AppCompatActivity {
 
@@ -38,6 +41,17 @@ public class NewPasswordInformation extends AppCompatActivity {
         setContentView(R.layout.activity_new_password_information);
         /*调用方法*/
         setToolBar();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /*判断是否可以截屏*/
+        if (new GetSettingThings(this).checkCanScreenshot()) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);//允许截屏
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);//禁止截屏
+        }
     }
 
     /**

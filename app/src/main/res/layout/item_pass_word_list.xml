@@ -12,24 +12,30 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/back_ground_radients_card"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="8dp">
 
         <LinearLayout
+            android:id="@+id/card_view_item_linear"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/back_ground_radients_card"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp">
 
             <TextView
                 android:id="@+id/item_pass_word_list_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:padding="8dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
                 android:text="Title"
                 android:textColor="@color/primary_text"
                 android:textSize="18sp" />

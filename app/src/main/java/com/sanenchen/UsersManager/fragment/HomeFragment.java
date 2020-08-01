@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sanenchen.UsersManager.R;
+import com.sanenchen.UsersManager.activity.MainActivity;
 import com.sanenchen.UsersManager.activity.NewPasswordInformation;
 import com.sanenchen.UsersManager.recyclerViewAdapter.passWordList.PassWordList;
 import com.sanenchen.UsersManager.recyclerViewAdapter.passWordList.PassWordListAdapter;
@@ -64,6 +65,7 @@ public class HomeFragment extends Fragment {
         FAB_home_add_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity.add();
                 startActivity(new Intent(getActivity(), NewPasswordInformation.class));
             }
         });
