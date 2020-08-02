@@ -65,6 +65,8 @@ public class SetRecyclerView {
             PassWordListAdapter adapter = new PassWordListAdapter(passWordListList, context, MessageWhat);//初始化Adapter
             LinearLayoutManager manager = new LinearLayoutManager(context);
             manager.setOrientation(LinearLayoutManager.VERTICAL);
+            manager.setReverseLayout(true);//布局反向
+            manager.setStackFromEnd(true);//数据反向
             recyclerView.setLayoutManager(manager);
             recyclerView.setAdapter(adapter);//设置Adapter
         } else {//数据库里没有数据的话

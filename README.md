@@ -16,6 +16,11 @@
 ![image](http://sancloud.lyqmc.cn/SHOW/v0.5.gif)
 
 ## 更新记录
+### V0.5.1 内测更新
+1. 上线编辑功能
+2. 数据输出规则更改为“老数据在后，新增数据在前”模式，以后会推出由用户自由选择的设置按钮
+[APK下载](https://github.com/sanenchen-hub/AccountBook/releases/tag/v0.5.1)
+
 ### V0.5 内测更新
 1. 普通的密码卡片与进入收藏夹的卡片进行区别化
 2. 新增“是否允许在所有界面截图”的设置选项

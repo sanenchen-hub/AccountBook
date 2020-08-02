@@ -22,6 +22,7 @@ import com.sanenchen.UsersManager.R;
  * @version v1.0
  */
 public class AboutActivity extends AppCompatActivity {
+    int appCount = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,5 +82,22 @@ public class AboutActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         finish();//没其他按钮了，偷个懒
         return true;
+    }
+
+    /**
+     * 监测是否退到后台
+     */
+    protected void onStart() {
+        super.onStart();
+        appCount++;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        appCount--;
+        if(appCount <= 0){
+            finish();
+        }
     }
 }

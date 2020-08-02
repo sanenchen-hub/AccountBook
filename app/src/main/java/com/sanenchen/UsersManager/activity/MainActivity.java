@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity  {
     private HomeFragment homeFragment;
     private FavouriteFragment favouriteFragment;
     private SettingFragment settingFragment;
-    private Activity activityz;
+    public static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        activityz = this;
+        activity = this;
         /*调用方法*/
         setBottomBar();
         setToolBar();

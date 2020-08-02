@@ -16,7 +16,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="810f9611" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="localhost:5555" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -74,7 +74,7 @@
     <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/IDcard-compound-1.0.2" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -109,7 +109,7 @@
       <recent name="com.sanenchen.UsersManager.activity" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -168,6 +168,24 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AES" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sanenchen.UsersManager.tools.AES" />
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sanenchen.UsersManager.tools.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AES" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -192,10 +210,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="22" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1596085973861" />
-    <state x="200" y="96" key="#PSD" timestamp="1596289260681">
+    <state x="200" y="96" key="#PSD" timestamp="1596380667425">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1596289260681" />
+    <state x="200" y="96" key="#PSD/0.0.1366.728@0.0.1366.728" timestamp="1596380667425" />
     <state x="192" y="195" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595754818440">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -212,42 +230,46 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="294" y="154" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1596283800432" />
-    <state x="463" y="104" key="FileChooserDialogImpl" timestamp="1596254639016">
+    <state x="507" y="176" key="AndroidCreateXmlResourceDialog" timestamp="1596379041739">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596254639016" />
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom" timestamp="1596288662353">
+    <state x="507" y="176" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1596379041739" />
+    <state x="463" y="104" key="FileChooserDialogImpl" timestamp="1596361922682">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
-    <state width="1323" height="222" key="GridCell.Tab.0.center" timestamp="1596288662353">
+    <state x="463" y="104" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596361922682" />
+    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1596379894234">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
-    <state width="1323" height="222" key="GridCell.Tab.0.left" timestamp="1596288662353">
+    <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596379894234" />
+    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1596379894234">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
-    <state width="1323" height="222" key="GridCell.Tab.0.right" timestamp="1596288662353">
+    <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596379894234" />
+    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1596379894233">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596288662353" />
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1596288662354">
+    <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596379894233" />
+    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1596379894234">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
-    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1596288662354">
+    <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596379894234" />
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom" timestamp="1596361926537">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
-    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1596288662354">
+    <state width="1323" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596361926537" />
+    <state width="1323" height="222" key="GridCell.Tab.1.center" timestamp="1596361926536">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
-    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1596288662354">
+    <state width="1323" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1596361926536" />
+    <state width="1323" height="222" key="GridCell.Tab.1.left" timestamp="1596361926536">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1596288662354" />
+    <state width="1323" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1596361926536" />
+    <state width="1323" height="222" key="GridCell.Tab.1.right" timestamp="1596361926536">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1596361926536" />
     <state x="407" y="238" key="ScreenshotRecorder.Options.Dimensions" timestamp="1595750099323">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

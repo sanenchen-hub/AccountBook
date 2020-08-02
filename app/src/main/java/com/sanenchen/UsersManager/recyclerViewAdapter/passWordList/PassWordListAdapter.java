@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanenchen.UsersManager.R;
 import com.sanenchen.UsersManager.activity.MainActivity;
+import com.sanenchen.UsersManager.activity.NewPasswordInformation;
 import com.sanenchen.UsersManager.fragment.FavouriteFragment;
 import com.sanenchen.UsersManager.fragment.HomeFragment;
 import com.sanenchen.UsersManager.tools.DatabaseHelper;
@@ -86,7 +88,7 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
         final ViewHolder viewHolder = new ViewHolder(view);
         viewHolder.card_view_item_pass.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                 final AlertDialog dialog = builder.create();
                 View dialogView = View.inflate(mContext, R.layout.alert_dialog_adapter, null);
@@ -97,6 +99,7 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
                 Button copy_password = dialogView.findViewById(R.id.copy_password);
                 Button copy_del = dialogView.findViewById(R.id.copy_del);
                 Button move_favourite = dialogView.findViewById(R.id.move_favourite);
+                Button button_edit = dialogView.findViewById(R.id.button_edit);
                 final PassWordList passWordList = passWordListLists.get(viewHolder.getAdapterPosition());
                 copy_user.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -167,6 +170,16 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
                         }
                     });
                 }
+                button_edit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                        Intent intent = new Intent(mContext, NewPasswordInformation.class);
+                        intent.putExtra("id", passWordList.getId());
+                        MainActivity.add();
+                        mContext.startActivity(intent);
+                    }
+                });
             }
         });
         return viewHolder;
@@ -176,7 +189,6 @@ public class PassWordListAdapter extends RecyclerView.Adapter<PassWordListAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PassWordList passWordList = passWordListLists.get(position);
         String getPassword = "";
-        SharedPreferences preferences = mContext.getSharedPreferences(new SHA224().SHA224("data"), Context.MODE_PRIVATE);
         if (!new GetSettingThings(mContext).checkShowPassword()) {
             int totalPassLength;
             totalPassLength = passWordList.getPassword().length();

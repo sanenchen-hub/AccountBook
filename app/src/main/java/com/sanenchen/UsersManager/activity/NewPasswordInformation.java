@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,9 +32,11 @@ import java.util.List;
 
 /**
  * 点击FAB后的创建密码Activity
+ *
  * @author sanenchen
  */
 public class NewPasswordInformation extends AppCompatActivity {
+    int idT = 999999;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,33 @@ public class NewPasswordInformation extends AppCompatActivity {
         setContentView(R.layout.activity_new_password_information);
         /*调用方法*/
         setToolBar();
+        Intent intent = getIntent();
+
+        /*判断是否是从编辑按钮进来的*/
+        int id = intent.getIntExtra("id", 999999);
+        if (id != 999999) {
+            idT = id;
+            DatabaseHelper databaseHelper = new DatabaseHelper(this, "main.db", null, 1);
+            SQLiteDatabase database = databaseHelper.getWritableDatabase();
+            Cursor cursor = database.query("PassWordBook", null,
+                    "id = ?", new String[]{id + ""}, null, null, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    /*绑定控件*/
+                    TextInputLayout password_title = findViewById(R.id.password_title);
+                    TextInputLayout password_user = findViewById(R.id.password_user);
+                    TextInputLayout password_password = findViewById(R.id.password_password);
+                    TextInputLayout password_remark = findViewById(R.id.password_remark);
+                    TextInputLayout password_url = findViewById(R.id.password_url);
+                    password_title.getEditText().setText(cursor.getString(cursor.getColumnIndex("title")));
+                    password_title.getEditText().setSelection(cursor.getString(cursor.getColumnIndex("title")).length());//将光标移至文字末尾
+                    password_user.getEditText().setText(cursor.getString(cursor.getColumnIndex("user")));
+                    password_password.getEditText().setText(cursor.getString(cursor.getColumnIndex("password")));
+                    password_remark.getEditText().setText(cursor.getString(cursor.getColumnIndex("remark")));
+                    password_url.getEditText().setText(cursor.getString(cursor.getColumnIndex("url")));
+                } while (cursor.moveToNext());
+            }
+        }
     }
 
     @Override
@@ -119,9 +149,13 @@ public class NewPasswordInformation extends AppCompatActivity {
                     values.put("remark", password_remark.getEditText().getText().toString());
                     values.put("createTime", simpleDateFormat.format(date));
                     values.put("lookTime", 0);
-                    values.put("checkLove", "0");
                     values.put("url", password_url.getEditText().getText().toString());
-                    database.insert("PassWordBook", null, values);
+                    if (idT != 999999)
+                        database.update("PassWordBook", values, "id = ?", new String[]{idT + ""});
+                    else {
+                        values.put("checkLove", "0");
+                        database.insert("PassWordBook", null, values);
+                    }
                     databaseHelper.close();
                     finish();
                 }

@@ -16,7 +16,11 @@
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.verificationPass.InputPasswordActivity" />
         <activity android:name=".activity.verificationPass.InputFingerPrintActivity" />
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.CreatePassActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -40,6 +40,7 @@ public class CreatePassActivity extends AppCompatActivity {
     TextInputLayout create_pass_repeat_pass;
     TextInputLayout create_pass_tips;
     CheckBox check_box_check_finger_print;
+    int appCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -256,4 +257,22 @@ public class CreatePassActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    /**
+     * 监测是否退到后台
+     */
+    protected void onStart() {
+        super.onStart();
+        appCount++;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        appCount--;
+        if(appCount <= 0){
+            finish();
+        }
+    }
+
 }
